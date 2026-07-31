@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💍 Will You Marry Me?</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:url(""C:\Users\APPIDI SHIVA KUMAR\OneDrive\Documents\picture.jpeg"") center center/cover no-repeat;
+    position:relative;
+}
+
+/* Dark Overlay */
+body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(2px);
+}
+
+/* Floating Hearts */
+.hearts{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    z-index:0;
+}
+
+.heart{
+    position:absolute;
+    color:white;
+    opacity:.8;
+    animation:float linear infinite;
+    user-select:none;
+}
+
+@keyframes float{
+    0%{
+        transform:translateY(100vh) scale(.5);
+        opacity:0;
+    }
+    20%{
+        opacity:.9;
+    }
+    100%{
+        transform:translateY(-120px) scale(1.4);
+        opacity:0;
+    }
+}
+
+/* Glass Card */
+.card{
+    position:relative;
+    z-index:2;
+    width:92%;
+    max-width:430px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    backdrop-filter:blur(14px);
+    border-radius:28px;
+    padding:35px 25px;
+    text-align:center;
+    color:white;
+    box-shadow:0 8px 40px rgba(0,0,0,.35);
+    animation:fadeUp 1.2s;
+}
+
+@keyframes fadeUp{
+    from{
+        transform:translateY(30px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+h1{
+    font-size:2rem;
+    line-height:1.4;
+    margin-bottom:15px;
+}
+
+p{
+    margin-bottom:30px;
+    font-size:1rem;
+}
+
+.buttons{
+    position:relative;
+    height:80px;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    padding:14px 28px;
+    border-radius:40px;
+    transition:.3s;
+}
+
+#yes{
+    background:white;
+    color:#d63384;
+    margin-right:15px;
+}
+
+#yes:hover{
+    transform:scale(1.08);
+}
+
+#no{
+    position:absolute;
+    background:rgba(255,255,255,.18);
+    color:white;
+    border:1px solid rgba(255,255,255,.4);
+}
+
+#message{
+    display:none;
+    margin-top:25px;
+    animation:fadeIn 1s;
+}
+
+#message h2{
+    margin-bottom:15px;
+}
+
+#message p{
+    line-height:1.8;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Confetti */
+.confetti{
+    position:fixed;
+    width:10px;
+    height:16px;
+    top:-20px;
+    z-index:9999;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
+}
+
+@media(max-width:500px){
+    h1{
+        font-size:1.6rem;
+    }
+
+    button{
+        padding:12px 24px;
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="hearts" id="hearts"></div>
+
+<div class="card">
+
+<h1>💍 Bavaa🤍,<br>Will You Marry Me? 🤍</h1>
+
+<p>
+Every moment with you feels magical. 🤍<br>
+Can we spend forever together?
+</p>
+
+<div class="buttons">
+<button id="yes">Yes 🤍</button>
+<button id="no">No 🤍</button>
+</div>
+
+<div id="message">
+<h2>🤍 You Said YES! 🤍</h2>
+
+<p>
+My Dearest Bavaa🤍,<br><br>
+
+You are the most beautiful chapter of my life.
+Every smile of yours fills my heart with happiness,
+and every moment with you becomes a memory I never want to lose.
+
+I promise to stand beside you,
+to hold your hand during every joy and every challenge,
+to make you laugh when you're sad,
+to love you endlessly,
+and to choose you every single day.
+
+Thank you for making my dream come true.
+
+🤍 I Love You Forever & Always. 🤍
+</p>
+
+</div>
+
+</div>
+
+<script>
+// Floating Hearts
+const heartContainer=document.getElementById("hearts");
+
+for(let i=0;i<40;i++){
+    const heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="🤍";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(18+Math.random()*22)+"px";
+    heart.style.animationDuration=(6+Math.random()*8)+"s";
+    heart.style.animationDelay=Math.random()*8+"s";
+    heartContainer.appendChild(heart);
+}
+
+// Moving No Button
+const no=document.getElementById("no");
+
+function moveButton(){
+    const maxX=window.innerWidth-110;
+    const maxY=window.innerHeight-80;
+
+    no.style.left=Math.random()*maxX+"px";
+    no.style.top=Math.random()*maxY+"px";
+}
+
+no.addEventListener("mouseover",moveButton);
+no.addEventListener("touchstart",function(e){
+    e.preventDefault();
+    moveButton();
+});
+
+// Yes Click
+document.getElementById("yes").addEventListener("click",function(){
+
+    createConfetti();
+
+    document.getElementById("message").style.display="block";
+
+    document.querySelector(".buttons").style.display="none";
+
+});
+
+// Confetti
+function createConfetti(){
+
+    const colors=[
+        "#ffffff",
+        "#f8f9fa",
+        "#eeeeee",
+        "#dddddd"
+    ];
+
+    for(let i=0;i<180;i++){
+
+        const piece=document.createElement("div");
+        piece.className="confetti";
+
+        piece.style.left=Math.random()*100+"vw";
+        piece.style.background=colors[Math.floor(Math.random()*colors.length)];
+        piece.style.transform=`rotate(${Math.random()*360}deg)`;
+        piece.style.animationDuration=(3+Math.random()*2)+"s";
+
+        document.body.appendChild(piece);
+
+        setTimeout(()=>{
+            piece.remove();
+        },5000);
+
+    }
+
+}
+</script>
+
+</body>
+</html>
