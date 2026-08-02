@@ -1,137 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bubbyyyy</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>💍 Bavaa🤍, Will You Marry Me? 🤍</title>
 <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    height: 100vh;
-    background-image: url("C:\Users\APPIDI SHIVA KUMAR\OneDrive\Documents\GitHub\personal\background.jpg") center/cover no-repeat fixed;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    overflow: hidden;
-    backdrop-filter: brightness(0.85);
-  }
-  .card {
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(12px);
-    padding: 32px 28px;
-    border-radius: 20px;
-    text-align: center;
-    color: white;
-    width: 90%;
-    max-width: 420px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  }
-  h1 { font-size: 1.8rem; margin-bottom: 8px; }
-  p { opacity: 0.9; margin-bottom: 24px; }
-  .buttons { position: relative; height: 60px; }
-  button {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-    position: absolute;
-  }
-  #yesBtn {
-    background: #ff4d6d;
-    color: white;
-    left: 50%;
-    transform: translateX(-120%);
-  }
-  #noBtn {
-    background: #ffffff22;
-    color: white;
-    border: 1px solid #ffffff44;
-    left: 50%;
-    transform: translateX(20%);
-  }
-  #yesBtn:hover { transform: translateX(-120%) scale(1.05); }
-  
-  /* after yes screen */
-  .after { display: none; }
-  .after h2 { font-size: 2rem; margin-bottom: 10px; }
-  .after .quote { font-size: 1.1rem; font-style: italic; margin-bottom: 20px; }
-  
-  /* hearts */
-  .heart {
-    position: fixed;
-    top: -20px;
-    color: white;
-    font-size: 20px;
-    animation: fall linear forwards;
-    pointer-events: none;
-  }
-  @keyframes fall {
-    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
-  }
-</style>
-</head>
-<body>
-
-<div class="card" id="proposal">
-  <h1>Will you be mine? ❤️</h1>
-  <p>Please say yes bubbyyyy</p>
-  <div class="buttons">
-    <button id="yesBtn">Yes</button>
-    <button id="noBtn">No</button>
-  </div>
-</div>
-
-<div class="card after" id="after">
-  <h2>For bubbyyyy ❤️</h2>
-  <div class="quote">YOUR_QUOTE</div>
-  <p>You made me the happiest</p>
-</div>
-
-<script>
-  const yesBtn = document.getElementById('yesBtn');
-  const noBtn = document.getElementById('noBtn');
-  const proposal = document.getElementById('proposal');
-  const after = document.getElementById('after');
-
-  // make no button run away on hover and on touch
-  function moveNo() {
-    const btnRect = noBtn.getBoundingClientRect();
-    const maxX = window.innerWidth - btnRect.width - 20;
-    const maxY = window.innerHeight - btnRect.height - 20;
-    const x = Math.random() * maxX;
-    const y = Math.random() * maxY;
-    noBtn.style.left = x + 'px';
-    noBtn.style.top = y + 'px';
-    noBtn.style.transform = 'none';
-  }
-  noBtn.addEventListener('mouseover', moveNo);
-  noBtn.addEventListener('touchstart', (e) => { e.preventDefault(); moveNo(); });
-
-  // yes clicked
-  yesBtn.addEventListener('click', () => {
-    proposal.style.display = 'none';
-    after.style.display = 'block';
-    startHearts();
-  });
-
-  // white hearts
-  function startHearts() {
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = '🤍';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (12 + Math.random()*18) + 'px';
-      heart.style.animationDuration = (3 + Math.random()*3) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 200);
-  }
-</script>
-
-</body>
-</html>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:url("C:\Users\APPIDI SHIVA KUMAR\OneDrive\Documents\GitHub\personal\background.jpg") center/cover no-repeat;position:relative}
+body:before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.hearts{position:absolute;inset:0}.heart{position:absolute;color:#fff;animation:f linear infinite}
+@keyframes f{0%{transform:translateY(100vh);opacity:0}20%{opacity:1}100%{transform:translateY(-120px);opacity:0}}
+.card{position:relative;z-index:2;max-width:430px;width:92%;padding:30px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);color:#fff;text-align:center}
+.buttons{position:relative;height:70px}button{padding:12px 22px;border:none;border-radius:30px;font-size:18px;cursor:pointer}#yes{background:#fff;color:#d63384}#no{position:absolute;left:180px;background:rgba(255,255,255,.2);color:#fff}#msg{display:none;margin-top:20px}
+.confetti{position:fixed;width:8px;height:12px;top:-20px;animation:fall 4s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style></head><body><div class="hearts" id=h></div><div class="card"><h1>💍 Bavaa🤍,<br>Will You Marry Me? 🤍</h1><p>Every moment with you feels magical. 🤍</p><div class="buttons"><button id=yes>Yes 🤍</button><button id=no>No 🤍</button></div><div id=msg><h2>🤍 You Said YES! 🤍</h2><p>My Dearest Bavaa🤍,<br><br>I promise to stand beside you, love you forever, and choose you every single day.<br><br>🤍 I Love You Forever & Always. 🤍</p></div></div><script>
+const h=document.getElementById('h');for(let i=0;i<40;i++){let e=document.createElement('div');e.className='heart';e.innerHTML='🤍';e.style.left=Math.random()*100+'vw';e.style.fontSize=(18+Math.random()*20)+'px';e.style.animationDuration=(5+Math.random()*5)+'s';h.appendChild(e);}
+no.onmouseover=()=>{no.style.left=Math.random()*(innerWidth-120)+'px';no.style.top=Math.random()*(innerHeight-80)+'px';};
+yes.onclick=()=>{document.querySelector('.buttons').style.display='none';msg.style.display='block';for(let i=0;i<150;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=['#fff','#eee','#ddd'][Math.floor(Math.random()*3)];document.body.appendChild(c);setTimeout(()=>c.remove(),4000);}};
+</script></body></html>
