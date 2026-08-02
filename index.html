@@ -1,18 +1,56 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>💍 Bavaa🤍, Will You Marry Me? 🤍</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;background:url("./background.jpg
-") center/cover no-repeat;position:relative}
-body:before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.35)}
-.hearts{position:absolute;inset:0}.heart{position:absolute;color:#fff;animation:f linear infinite}
-@keyframes f{0%{transform:translateY(100vh);opacity:0}20%{opacity:1}100%{transform:translateY(-120px);opacity:0}}
-.card{position:relative;z-index:2;max-width:430px;width:92%;padding:30px;border-radius:24px;background:rgba(255,255,255,.12);backdrop-filter:blur(12px);color:#fff;text-align:center}
-.buttons{position:relative;height:70px}button{padding:12px 22px;border:none;border-radius:30px;font-size:18px;cursor:pointer}#yes{background:#fff;color:#d63384}#no{position:absolute;left:180px;background:rgba(255,255,255,.2);color:#fff}#msg{display:none;margin-top:20px}
-.confetti{position:fixed;width:8px;height:12px;top:-20px;animation:fall 4s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
-</style></head><body><div class="hearts" id=h></div><div class="card"><h1>💍 Bavaa🤍,<br>Will You Marry Me? 🤍</h1><p>Every moment with you feels magical. 🤍</p><div class="buttons"><button id=yes>Yes 🤍</button><button id=no>No 🤍</button></div><div id=msg><h2>🤍 You Said YES! 🤍</h2><p>My Dearest Bavaa🤍,<br><br>I promise to stand beside you, love you forever, and choose you every single day.<br><br>🤍 I Love You Forever & Always. 🤍</p></div></div><script>
-const h=document.getElementById('h');for(let i=0;i<40;i++){let e=document.createElement('div');e.className='heart';e.innerHTML='🤍';e.style.left=Math.random()*100+'vw';e.style.fontSize=(18+Math.random()*20)+'px';e.style.animationDuration=(5+Math.random()*5)+'s';h.appendChild(e);}
-no.onmouseover=()=>{no.style.left=Math.random()*(innerWidth-120)+'px';no.style.top=Math.random()*(innerHeight-80)+'px';};
-yes.onclick=()=>{document.querySelector('.buttons').style.display='none';msg.style.display='block';for(let i=0;i<150;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=['#fff','#eee','#ddd'][Math.floor(Math.random()*3)];document.body.appendChild(c);setTimeout(()=>c.remove(),4000);}};
-</script></body></html>
+body{
+height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden;
+background:url("background.jpg") center/cover no-repeat;position:relative}
+body:before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.35)}
+.hearts{position:absolute;inset:0;overflow:hidden}
+.heart{position:absolute;color:#fff;animation:float linear infinite}
+@keyframes float{from{transform:translateY(100vh);opacity:0}20%{opacity:1}to{transform:translateY(-120px);opacity:0}}
+.card{position:relative;z-index:2;width:92%;max-width:430px;padding:30px;border-radius:24px;
+background:rgba(255,255,255,.12);backdrop-filter:blur(12px);color:#fff;text-align:center}
+button{padding:12px 24px;border:none;border-radius:30px;font-size:18px;font-weight:bold;cursor:pointer}
+#yes{background:#fff;color:#c2185b}
+#no{position:absolute;left:180px;background:rgba(255,255,255,.2);color:#fff}
+#message{display:none;margin-top:20px;line-height:1.7}
+.confetti{position:fixed;width:8px;height:12px;top:-20px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+<div class="card">
+<h1>💍 Bavaa🤍,<br>Will You Marry Me? 🤍</h1>
+<p>Every moment with you feels magical. Will you spend forever with me? 🤍</p>
+<div style="position:relative;height:70px">
+<button id="yes">Yes 🤍</button>
+<button id="no">No 🤍</button>
+</div>
+<div id="message">
+<h2>🤍 You Said YES! 🤍</h2>
+<p>My Dearest Bavaa🤍,<br><br>
+I promise to love you, support you, and choose you every single day.<br>
+Thank you for making my dream come true.<br><br>
+🤍 I Love You Forever & Always. 🤍
+</p>
+</div>
+</div>
+<script>
+const hc=document.getElementById('hearts');
+for(let i=0;i<40;i++){let h=document.createElement('div');h.className='heart';h.textContent='🤍';h.style.left=Math.random()*100+'vw';h.style.fontSize=(18+Math.random()*20)+'px';h.style.animationDuration=(5+Math.random()*5)+'s';h.style.animationDelay=Math.random()*5+'s';hc.appendChild(h);}
+const no=document.getElementById('no');
+function mv(){no.style.left=Math.random()*(innerWidth-120)+'px';no.style.top=Math.random()*(innerHeight-80)+'px';}
+no.onmouseover=mv;no.ontouchstart=e=>{e.preventDefault();mv();}
+document.getElementById('yes').onclick=()=>{
+document.getElementById('message').style.display='block';
+document.querySelector('div[style]').style.display='none';
+for(let i=0;i<180;i++){let c=document.createElement('div');c.className='confetti';c.style.left=Math.random()*100+'vw';c.style.background=['#fff','#eee','#ddd'][Math.floor(Math.random()*3)];c.style.animationDuration=(3+Math.random()*2)+'s';document.body.appendChild(c);setTimeout(()=>c.remove(),5000);}
+};
+</script>
+</body></html>
